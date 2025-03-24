@@ -288,7 +288,8 @@ impl Env for WebEnv {
         request_options
             .method(method)
             .headers(&headers)
-            .body(body.as_ref());
+            .body(body.as_ref())
+            .credentials(web_sys::RequestCredentials::Include);
 
         let request = web_sys::Request::new_with_str_and_init(&url, &request_options)
             .expect("request builder failed");
